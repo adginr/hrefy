@@ -13,7 +13,12 @@ pydantic = "^1.9.0"
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
 alembic = "^1.7.6"
+sqlalchemy2-stubs = "^0.0.2-alpha.19"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.pyright]
+reportUnusedImport = "information"

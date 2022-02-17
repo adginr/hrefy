@@ -193,6 +193,14 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pysqlite"
+version = "2.8.3"
+description = "DB-API 2.0 interface for SQLite 3.x"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "sniffio"
 version = "1.2.0"
 description = "Sniff out which async library your code is running under"
@@ -292,7 +300,7 @@ standard = ["websockets (>=10.0)", "httptools (>=0.2.0,<0.4.0)", "watchgod (>=0.
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "c4038f7abc2c40e54ed59ae5db7089154229b690160291e6c12c85ec5dd4c146"
+content-hash = "99e786271970de0420f9f8e2126814b142acfad9acf8ae648eb6127a6e39e2f4"
 
 [metadata.files]
 alembic = [
@@ -532,6 +540,9 @@ pydantic = [
     {file = "pydantic-1.9.0-cp39-cp39-win_amd64.whl", hash = "sha256:2cc6a4cb8a118ffec2ca5fcb47afbacb4f16d0ab8b7350ddea5e8ef7bcc53a16"},
     {file = "pydantic-1.9.0-py3-none-any.whl", hash = "sha256:085ca1de245782e9b46cefcf99deecc67d418737a1fd3f6a4f511344b613a5b3"},
     {file = "pydantic-1.9.0.tar.gz", hash = "sha256:742645059757a56ecd886faf4ed2441b9c0cd406079c2b4bee51bcc3fbcd510a"},
+]
+pysqlite = [
+    {file = "pysqlite-2.8.3.tar.gz", hash = "sha256:17d3335863e8cf8392eea71add33dab3f96d060666fe68ab7382469d307f4490"},
 ]
 sniffio = [
     {file = "sniffio-1.2.0-py3-none-any.whl", hash = "sha256:471b71698eac1c2112a40ce2752bb2f4a4814c22a54a3eed3676bc0f5ca9f663"},

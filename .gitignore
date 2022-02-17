@@ -8,8 +8,8 @@ node_modules
 .log
 log
 
-# python 
-
+# Python 
+typings
 *.pyc
 __pycache__
 

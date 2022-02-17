@@ -1,0 +1,17 @@
+# IDE
+.vscode
+
+# node
+node_modules
+
+# log
+.log
+log
+
+# python 
+
+*.pyc
+__pycache__
+
+
+

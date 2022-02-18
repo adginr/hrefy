@@ -1,7 +1,14 @@
+from datetime import datetime, timedelta
+
 from app.db import Base
+from app.settings import settings
 from sqlalchemy import Boolean, Column, DateTime, Integer, String
 
 # from sqlalchemy.orm import relationship
+
+
+def get_expires():
+    return datetime.now() + timedelta(days=settings.DEFAULT_LINK_EXPIRIES_DAYS)
 
 
 class Link(Base):
@@ -9,9 +16,10 @@ class Link(Base):
 
     id = Column(Integer, primary_key=True)
     link_short = Column(String(10), unique=True)
-    link_full = Column(String, unique=True)
+    link_origin = Column(String(255))
     is_active = Column(Boolean, default=True)
-    expiries_dt = Column(DateTime)  # now + 90 days
+    expires_dt = Column(DateTime, default=get_expires)  # now + 90 days
+    _is_removed = Column(Boolean, default=False)
 
     # last_visit_dt = Column(DateTime) TODO When(dt) link was visited last time
     # fk_user_id: TODO Relate link to particular user

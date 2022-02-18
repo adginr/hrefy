@@ -1,20 +1,27 @@
-from datetime import datetime
+from datetime import timedelta
+from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 class BaseLink(BaseModel):
-    full_url: str
-    expires_dt: datetime
+    link_origin: HttpUrl
+    expires_dt: Any
+    is_active: bool = True
+
 
 class CreateLink(BaseLink):
-    full_url: str
-    fk_user_id: int
+    # fk_user_id: int
+    pass
+
 
 class UpdateLink(BaseLink):
-    full_url: str
-    expires_dt: datetime
+    pass
 
-class DbLink(BaseLink):
+
+class DBLink(BaseLink):
     id: int
-    short: str
+    link_short: str
+
+    class Config:
+        orm_mode = True

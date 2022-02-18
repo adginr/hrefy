@@ -13,5 +13,6 @@ typings
 *.pyc
 __pycache__
 
-
+# db
+db.sqlite3
 

@@ -1,5 +1,4 @@
 import string
-import typing as ty
 
 ALPHABET = string.ascii_letters + string.digits
 

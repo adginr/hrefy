@@ -1,5 +1,5 @@
 from app import model, schema
-from helpers import num_encode
+from app.helpers.encode import num_encode
 from sqlalchemy import select, update
 from sqlalchemy.orm.session import Session
 

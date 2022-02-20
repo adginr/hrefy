@@ -15,4 +15,5 @@ __pycache__
 
 # db
 db.sqlite3
+test.db
 

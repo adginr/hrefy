@@ -68,6 +68,9 @@ async function remove() {
     emit("refresh");
   } catch (error) {}
 }
+function redirect() {
+  window.location.replace(`${link.link_origin}`);
+}
 </script>
 
 <template lang="pug">
@@ -75,7 +78,7 @@ form.link-form(@submit.prevent="send")
   input.checkbox(type="checkbox" v-model='link.is_active'  :disabled='!editMode')
   input.input.origin(v-model.trim='link.link_origin' placeholder="Enter valid url"  :disabled='!editMode')
   input.input.short(v-if='link.id && editMode' v-model.trim='link.link_short' :disabled='!editMode')
-  a.short(v-if='link.id && !editMode' target='_blank' :href="`http://localhost:8000/${link.link_short}`", v-html="`http://localhost:8000/${link.link_short}`" )
+  a.short(v-if='link.id && !editMode' target='_blank' @click="redirect", v-html="`http://localhost:3000/${link.link_short}`" )
   input.input.num(type='number' v-model.lazy='daysLeft' min=1 max=365 :disabled='!editMode')
   .actions.buttons(v-if='editMode' )
     button.button.is-primary Save

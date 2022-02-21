@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 
 from app.api.v1.api import router as api_router
 
@@ -13,3 +14,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/{link_short}", response_class=RedirectResponse)
+def redirect(link_short: str):
+    return f"/api/v1/link/redirect/{link_short}"

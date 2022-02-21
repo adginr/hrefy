@@ -2,6 +2,7 @@ from app import crud, schema
 from app.api.deps import gen_session
 from fastapi import APIRouter, Depends, status
 from fastapi.exceptions import HTTPException
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm.session import Session
 
 router = APIRouter()
@@ -11,6 +12,14 @@ router = APIRouter()
 def create(obj_in: schema.CreateLink, session: Session = Depends(gen_session)):
     obj_db = crud.link.create(obj_in, session)
     return obj_db
+
+
+@router.get("/redirect/{link_short:str}", response_class=RedirectResponse)
+def redirect(link_short: str, session: Session = Depends(gen_session)):
+    db_obj = crud.link.read(session, link_short)
+    if db_obj is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+    return db_obj.link_origin
 
 
 @router.get("/{link_short:str}", response_model=schema.DBLink)

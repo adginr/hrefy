@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Any, Callable
+from typing import Callable
 
 from app.settings import settings
 from pydantic import BaseModel, HttpUrl, validator

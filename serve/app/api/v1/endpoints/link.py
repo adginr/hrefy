@@ -38,7 +38,7 @@ def update_link(
 
     # Vefiry wether new link_short is unique
     is_link_short_passed = obj_in.dict().get("link_short")
-    if is_link_short_passed is not None:
+    if is_link_short_passed is not None and is_link_short_passed != link_short:
         check_db_obj = crud.link.read(session, is_link_short_passed)
         if check_db_obj is not None:
             raise HTTPException(

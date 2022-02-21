@@ -48,5 +48,9 @@ class CRUDLink(CRUDBase[model.Link, schema.CreateLink, schema.UpdateLink]):
         select_stmt = select(self.model).where(self.model.link_short == link_short)
         return session.execute(select_stmt).scalar_one_or_none()
 
+    def get_all(self, session: Session):
+        stmt = select(self.model).where(self.model._is_removed != True)
+        return [obj[0] for obj in session.execute(stmt).fetchall()]
+
 
 crud_link = CRUDLink(model.Link)  # type: ignore

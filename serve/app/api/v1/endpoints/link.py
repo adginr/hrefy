@@ -21,6 +21,11 @@ def read(link_short: str, session: Session = Depends(gen_session)):
     return db_obj
 
 
+@router.get("/", response_model=list[schema.DBLink])
+def get_all(session: Session = Depends(gen_session)):
+    return crud.link.get_all(session)
+
+
 @router.put(
     "/{link_short}", status_code=status.HTTP_200_OK, response_model=schema.DBLink
 )

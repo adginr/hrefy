@@ -117,3 +117,27 @@ def test_update_link_invalid(
     }
     response = client.put(f"{API_URL}/{current_link_short}", json=payload)
     assert response.status_code == status
+
+
+@pytest.mark.parametrize(
+    "status, link_short",
+    [
+        (202, "f54"),
+        (202, "Mi7"),
+    ],
+)
+def test_delete_link(client: TestClient, status: int, link_short: str):
+    response = client.delete(f"{API_URL}/{link_short}")
+    assert response.status_code == status
+
+
+@pytest.mark.parametrize(
+    "status, link_short",
+    [
+        (404, "f5422"),
+        (404, "Mi7dff"),
+    ],
+)
+def test_delete_link_invalid(client: TestClient, status: int, link_short: str):
+    response = client.delete(f"{API_URL}/{link_short}")
+    assert response.status_code == status

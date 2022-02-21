@@ -1,5 +1,6 @@
 from app import model, schema
 from app.helpers.encode import num_encode
+from fastapi.encoders import jsonable_encoder
 from sqlalchemy import select, update
 from sqlalchemy.orm.session import Session
 
@@ -26,8 +27,13 @@ class CRUDLink(CRUDBase[model.Link, schema.CreateLink, schema.UpdateLink]):
         )
         return session.execute(stmt).scalar_one_or_none()
 
-    def update(self, session: Session, obj_in: schema.UpdateLink):
-        pass
+    def update(self, session: Session, obj_in: schema.UpdateLink, db_obj: model.Link):
+        json_obj = obj_in.dict(exclude_defaults=True, exclude_none=True)
+        for field in json_obj:
+            setattr(db_obj, field, json_obj[field])
+        session.add(db_obj)
+        session.commit()
+        return db_obj
 
     def delete(self, session: Session, link_short: str) -> model.Link | None:
         # Update

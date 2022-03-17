@@ -6,13 +6,13 @@ authors = ["Nickolai Kolin"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "sqlalchemy"
+fastapi = "0.75.0"
 uvicorn = "^0.17.5"
 pydantic = "^1.9.0"
+alembic = "^1.7.6"
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
-alembic = "^1.7.6"
 sqlalchemy2-stubs = "^0.0.2-alpha.19"
 pytest = "^7.0.1"
 requests = "^2.27.1"

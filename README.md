@@ -15,7 +15,14 @@ Sample project of link shorter in portfolio
 - Short link is always unique
 - Links Lifetime within 1 and 365 day
 
-### Install
+### Install with docker
+
+```sh
+cd hrefy
+docker-compose up
+```
+
+### Alternative Install
 
 ```sh
 # Before install you should have at least:
